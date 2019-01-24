@@ -15,6 +15,8 @@ webflux !!
 
 - Learn how to create Flux instances
 
+- Learn how to use StepVerifier
+
 - reference : https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
 
 - reference : https://github.com/reactive-streams/reactive-streams-jvm/tree/v1.0.2
