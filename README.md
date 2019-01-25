@@ -17,6 +17,8 @@ webflux !!
 
 - Learn how to use StepVerifier
 
+- Learn how to transform
+
 - reference : https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
 
 - reference : https://github.com/reactive-streams/reactive-streams-jvm/tree/v1.0.2
