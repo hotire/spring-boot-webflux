@@ -7,6 +7,13 @@ webflux !!
 
 - reference : https://spring.io/guides/gs/reactive-rest-service/
 
+
+### Reactive Stream 
+
+- Reactive Stream (Iterable duality)
+
+- reference : https://github.com/reactive-streams/reactive-streams-jvm/tree/v1.0.2
+
 ### Learn Reactive Programming
 
 - Reactive Stream (Iterable duality)
@@ -20,8 +27,6 @@ webflux !!
 - Learn how to transform
 
 - reference : https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
-
-- reference : https://github.com/reactive-streams/reactive-streams-jvm/tree/v1.0.2
 
 
 hotire blog : https://blog.naver.com/gngh0101
