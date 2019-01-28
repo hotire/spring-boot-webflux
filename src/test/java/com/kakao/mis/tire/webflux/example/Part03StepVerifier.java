@@ -17,7 +17,6 @@ import reactor.test.StepVerifier;
  */
 public class Part03StepVerifier {
 
-
   void expectFooBarComplete(Flux<String> flux) {
     StepVerifier.create(flux)
                 .expectNext("foo")
