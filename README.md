@@ -26,6 +26,8 @@ webflux !!
 
 - Learn how to transform
 
+- Learn how to merge
+
 - reference : https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
 
 
