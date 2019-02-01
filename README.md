@@ -12,6 +12,10 @@ webflux !!
 
 - Reactive Stream (Iterable duality)
 
+- Observable, Observer / Publisher, Subscriber
+
+- Operators
+
 - reference : https://github.com/reactive-streams/reactive-streams-jvm/tree/v1.0.2
 
 ### Learn Reactive Programming
