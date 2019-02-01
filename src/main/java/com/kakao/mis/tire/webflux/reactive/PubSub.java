@@ -1,7 +1,7 @@
 package com.kakao.mis.tire.webflux.reactive;
 
 
-import java.util.PriorityQueue;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -36,7 +36,7 @@ public class PubSub {
 
     Publisher p = new Publisher<>() {
       private Queue<Integer> queue = IntStream.range(1,10).boxed()
-        .collect(Collectors.toCollection (PriorityQueue::new));
+        .collect(Collectors.toCollection (LinkedList::new));
 
       /**
        * Subscription는
