@@ -79,7 +79,7 @@ public class Operators {
       public void onSubscribe(Subscription subscription) {
         log.debug("on Subscribe");
         this.subscription = subscription;
-        this.subscription.request(1);
+        this.subscription.request(Long.MAX_VALUE);
       }
 
       @Override
