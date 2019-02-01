@@ -14,7 +14,7 @@ webflux !!
 
 - Observable, Observer / Publisher, Subscriber
 
-- Operators
+- Operators (map, sum)
 
 - reference : https://github.com/reactive-streams/reactive-streams-jvm/tree/v1.0.2
 
