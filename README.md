@@ -20,8 +20,6 @@ webflux !!
 
 ### Learn Reactive Programming
 
-- Reactive Stream (Iterable duality)
-
 - Learn how to create Mono instances
 
 - Learn how to create Flux instances
