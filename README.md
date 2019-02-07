@@ -34,6 +34,8 @@ webflux !!
 
 - Learn how to deal with errors, exceptions
 
+- Learn how to use various other operators
+
 - reference : https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
 
 

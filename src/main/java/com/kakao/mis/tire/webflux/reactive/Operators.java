@@ -21,7 +21,7 @@ public class Operators {
   }
 
 
-  private static Publisher<Integer> sum(Publisher<Integer> pub) {
+  public static Publisher<Integer> sum(Publisher<Integer> pub) {
     return sub -> pub.subscribe(new DelegateSub<Integer, Integer>(sub) {
       private Integer sum = 0;
 
@@ -39,7 +39,7 @@ public class Operators {
     });
   }
 
-  private static<T, R> Publisher<R> map2(Publisher<T> pub, Function<T, R> function) {
+  public static<T, R> Publisher<R> map2(Publisher<T> pub, Function<T, R> function) {
     return sub -> pub.subscribe(new DelegateSub<T, R>(sub){
       @Override
       public void onNext(T t) {
@@ -48,7 +48,7 @@ public class Operators {
     });
   }
 
-  private static<T, R> Publisher<R> map(Publisher<T> pub, Function<T, R> function) {
+  public static<T, R> Publisher<R> map(Publisher<T> pub, Function<T, R> function) {
     return subscriber -> pub.subscribe(new Subscriber<>() {
       @Override
       public void onSubscribe(Subscription subscription) {
@@ -72,7 +72,7 @@ public class Operators {
     });
   }
 
-  private static<T> Subscriber<? super T> logSub() {
+  public static<T> Subscriber<? super T> logSub() {
     return new Subscriber<>() {
       private Subscription subscription;
       @Override
@@ -99,11 +99,12 @@ public class Operators {
     };
   }
 
-  private static<T> Publisher<T> fromIterable(Iterable<T> iterable) {
+  public static<T> Publisher<T> fromIterable(Iterable<T> iterable) {
     return sub -> sub.onSubscribe(new Subscription() {
       @Override
       public void request(long n) {
         try {
+          log.debug("on Request");
           iterable.forEach(sub::onNext);
           sub.onComplete();
         } catch (RuntimeException e) {
