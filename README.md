@@ -36,6 +36,8 @@ webflux !!
 
 - Learn how to use various other operators
 
+- Learn how to adapt from/to RxJava 2 Observable/Single/Flowable and Java 8+ CompletableFuture
+
 - reference : https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
 
 
