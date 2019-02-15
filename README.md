@@ -40,6 +40,8 @@ webflux !!
 
 - Learn how to turn Reactive API to blocking one
 
+- Learn how to call blocking code from Reactive one with adapted concurrency strategy
+
 - reference : https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
 
 
