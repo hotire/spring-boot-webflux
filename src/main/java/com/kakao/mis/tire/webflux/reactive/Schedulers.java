@@ -20,7 +20,7 @@ import reactor.core.publisher.Flux;
 @Slf4j
 public class Schedulers {
   public static void main(String ... args) throws InterruptedException {
-    Publisher<Integer> publisher = (realSubOn(fromIterable(IntStream.range(1,10).boxed().collect(toList()))));
+    Publisher<Integer> publisher = pubOn(subOn(fromIterable(IntStream.range(1,10).boxed().collect(toList()))));
     publisher.subscribe(logSub());
     log.debug("exit");
   }

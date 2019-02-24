@@ -16,6 +16,8 @@ webflux !!
 
 - Operators (map, sum)
 
+- Schedulers (subOn, pubOn)
+
 - reference : https://github.com/reactive-streams/reactive-streams-jvm/tree/v1.0.2
 
 ### Learn Reactive Programming
