@@ -47,13 +47,23 @@ webflux !!
 - reference : https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro
 
 
-### DispatcherHandler
+### WebHandler / DispatcherHandler Core
 
-- Mechanism(WebHandler, ApplicationContextAware) / initStrategies
+- core(WebHandler, ApplicationContextAware) / initStrategies
 
  https://blog.naver.com/gngh0101/221529470975
 
+- core(HandlerMapping / Adapter)
   
+ https://blog.naver.com/gngh0101/221531987925
+  
+- core(HttpHandler)
+
+https://blog.naver.com/gngh0101/221538537388   
+
+
+~~~
+~~~
 
 hotire blog : https://blog.naver.com/gngh0101
 
