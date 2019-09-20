@@ -61,6 +61,10 @@ webflux !!
 
 - https://blog.naver.com/gngh0101/221538537388   
 
+### core(HandlerResultHandler)
+
+- https://blog.naver.com/gngh0101/221654344250
+
 
 ~~~
 ~~~
