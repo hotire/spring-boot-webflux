@@ -82,6 +82,15 @@ webflux !!
 ```
 ```
 
+## CORS (Cross-origin resource sharing)
+
+### Global Configuration && CORS WebFilter
+
+https://blog.naver.com/gngh0101/221661802246
+
+
+```
+```
 ## Netty
 
 
