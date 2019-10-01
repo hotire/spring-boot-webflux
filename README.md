@@ -81,7 +81,15 @@ webflux !!
 
 ```
 ```
+## ExceptionHandler
 
+### core (ExceptionHandlingWebHandler)
+
+https://blog.naver.com/gngh0101/221665211574
+
+
+```
+```
 ## CORS (Cross-origin resource sharing)
 
 ### Global Configuration && CORS WebFilter
