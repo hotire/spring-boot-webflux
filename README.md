@@ -87,7 +87,7 @@ webflux !!
 
 https://blog.naver.com/gngh0101/221665211574
 
-### Custom Global ExceptionHandling
+### Custom Global ExceptionHandler
 
 https://blog.naver.com/gngh0101/221669551823
 
