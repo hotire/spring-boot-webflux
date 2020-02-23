@@ -4,9 +4,10 @@ import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.Single;
-import java.util.concurrent.CompletableFuture;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+
+import java.util.concurrent.CompletableFuture;
 
 /**
  *
@@ -15,7 +16,6 @@ import reactor.core.publisher.Mono;
  * Learn how to adapt from/to RxJava 2 Observable/Single/Flowable and Java 8+ CompletableFuture.
  *
  * Mono and Flux already implements Reactive Streams interfaces so they are natively
- * Reactive Streams compliant + there are {@link Mono#from(Publisher)} and {@link Flux#from(Publisher)}
  * factory methods.
  *
  * For RxJava 2, you should not use Reactor Adapter but only RxJava 2 and Reactor Core.
@@ -24,7 +24,7 @@ import reactor.core.publisher.Mono;
  */
 public class Part09Adapt {
 
-  ReactiveRepository<User> repository = new ReactiveUserRepository();
+  ReactiveRepository<User> repository = new ReactiveRepository();
 
   Flowable<User> fromFluxToFlowable(Flux<User> flux) {
     return Flowable.fromPublisher(flux);

@@ -9,8 +9,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 
 
 @RunWith(SpringRunner.class)
-@WebFluxTest(value = {GreetingHandler.class, GreetingRouter.class, UserHandler.class,
-  CustomWebExceptionHandler.class})
+@WebFluxTest(value = {GreetingHandler.class, GreetingRouter.class, CustomWebExceptionHandler.class})
 public class CustomWebExceptionHandlerTest {
 
   @Autowired

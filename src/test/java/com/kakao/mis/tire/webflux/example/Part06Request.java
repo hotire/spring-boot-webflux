@@ -12,7 +12,7 @@ import reactor.test.StepVerifier;
  */
 public class Part06Request {
 
-  private ReactiveRepository<User> repository = new ReactiveUserRepository<>();
+  private ReactiveRepository<User> repository = new ReactiveRepository<>();
 
   StepVerifier requestAllExpectFour(Flux<User> flux) {
     return StepVerifier.create(flux).expectNextCount(4).expectComplete();
