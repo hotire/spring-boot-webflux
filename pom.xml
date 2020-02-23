@@ -19,6 +19,13 @@
     <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
   </properties>
 
+  <repositories>
+    <repository>
+      <id>hotire</id>
+      <url>http://dl.bintray.com/hotire/utils</url>
+    </repository>
+  </repositories>
+
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -104,13 +111,11 @@
       <artifactId>scheduler-conversion</artifactId>
       <version>0.0.3</version>
     </dependency>
-
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>25.0-jre</version>
     </dependency>
-
   </dependencies>
 
 
