@@ -22,6 +22,7 @@ public class CustomWebExceptionHandler implements WebExceptionHandler {
       return exchange.getResponse().setComplete();
     }
 
+    Mono.just(1).subscribe();
     return Mono.error(ex);
   }
 }
