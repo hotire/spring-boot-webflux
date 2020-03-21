@@ -101,6 +101,11 @@ https://blog.naver.com/gngh0101/221669551823
 https://blog.naver.com/gngh0101/221661802246
 
 
+## Codec 
+
+### CodecConfigurer 
+https://blog.naver.com/gngh0101/221865903679
+
 ```
 ```
 ## Netty
