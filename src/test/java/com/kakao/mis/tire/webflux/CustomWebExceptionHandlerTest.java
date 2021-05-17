@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
+import com.kakao.mis.tire.webflux.error.CustomWebExceptionHandler;
 
 @RunWith(SpringRunner.class)
 @WebFluxTest(value = {GreetingHandler.class, GreetingRouter.class, CustomWebExceptionHandler.class})
