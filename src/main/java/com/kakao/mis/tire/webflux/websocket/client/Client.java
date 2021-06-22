@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class Client {
 
-    private final static AtomicInteger MESSAGE_ID;
+    private static final AtomicInteger MESSAGE_ID;
 
     static {
         MESSAGE_ID = new AtomicInteger(0);

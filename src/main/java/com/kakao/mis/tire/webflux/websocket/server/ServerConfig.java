@@ -16,11 +16,6 @@ import org.springframework.web.reactive.socket.server.upgrade.ReactorNettyReques
 @Configuration
 public class ServerConfig {
 
-//    @Bean
-//    public WebSocketHandler webSocketHandler() {
-//        return new ServerHandler();
-//    }
-
     @Bean
     public HandlerMapping handlerMapping(final WebSocketHandler webSocketHandler) {
         final Map<String, WebSocketHandler> handlerByPathMap = new HashMap<>();
