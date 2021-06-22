@@ -108,6 +108,10 @@ https://blog.naver.com/gngh0101/221865903679
 
 ```
 ```
+## WebSockets
+
+https://docs.spring.io/spring-framework/docs/current/reference/html/web-reactive.html#webflux-websocket
+
 ## Netty
 
 
