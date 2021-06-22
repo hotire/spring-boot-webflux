@@ -30,6 +30,7 @@ public class ServerHandler implements WebSocketHandler {
 
     @Override
     public Mono<Void> handle(final WebSocketSession session) {
+        session.getAttributes();
         return session.receive()
                       .doOnNext(message -> {
                           log.info("Server -> client connected id=[{}]", session.getId());
