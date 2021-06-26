@@ -14,8 +14,8 @@ public class ServerController {
     private final ServerHandler serverHandler;
 
     @GetMapping
-    public void send() {
-        serverHandler.send("hello");
+    public void broadcast() {
+        serverHandler.broadcast("hello");
     }
 
 }
