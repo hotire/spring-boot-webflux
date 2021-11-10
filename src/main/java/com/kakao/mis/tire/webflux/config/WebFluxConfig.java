@@ -13,31 +13,31 @@ import org.springframework.web.reactive.config.WebFluxConfigurer;
 @Configuration
 public class WebFluxConfig implements WebFluxConfigurer {
 
-  @Override
-  public void configureHttpMessageCodecs(ServerCodecConfigurer configurer) {
-    configurer.getWriters().forEach(writer -> configurer.customCodecs().register(new HttpMessageWriterDecorator<>(writer)));
-  }
+    @Override
+    public void configureHttpMessageCodecs(ServerCodecConfigurer configurer) {
+        configurer.getWriters().forEach(writer -> configurer.customCodecs().register(new HttpMessageWriterDecorator<>(writer)));
+    }
 
-  @Override
-  public void addCorsMappings(CorsRegistry registry) {
-    registry
-      .addMapping("/hello/**")
-      .allowedOrigins("http://localhost:8080")
-      .allowedMethods(HttpMethod.GET.name())
-      .allowCredentials(true);
-  }
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry
+                .addMapping("/hello/**")
+                .allowedOrigins("http://localhost:8080")
+                .allowedMethods(HttpMethod.GET.name())
+                .allowCredentials(true);
+    }
 
-  @Bean
-  public CorsWebFilter corsFilter() {
-    CorsConfiguration config = new CorsConfiguration();
+    @Bean
+    public CorsWebFilter corsFilter() {
+        CorsConfiguration config = new CorsConfiguration();
 
-    config.setAllowCredentials(true);
-    config.addAllowedOrigin("http://localhost:8080");
-    config.addAllowedMethod(HttpMethod.GET.name());
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("http://localhost:8080");
+        config.addAllowedMethod(HttpMethod.GET.name());
 
-    UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-    source.registerCorsConfiguration("/hello/**", config);
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/hello/**", config);
 
-    return new CorsWebFilter(source);
-  }
+        return new CorsWebFilter(source);
+    }
 }

@@ -28,9 +28,9 @@ public class ClientConfig implements ApplicationRunner {
         Mono.delay(Duration.ofSeconds(10))
             .publishOn(Schedulers.boundedElastic())
             .subscribe(value -> {
-            clientOne.stop();
-            clientTwo.stop();
-        });
+                clientOne.stop();
+                clientTwo.stop();
+            });
     }
 
     private URI getURI() {

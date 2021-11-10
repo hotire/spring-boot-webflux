@@ -40,7 +40,6 @@ public class Client {
         log.info("Client stopped.");
     }
 
-
     public Mono<Void> doLogic(final WebSocketSession session) {
         return sendMessage(session)
                 .thenMany(receiveAll(session))

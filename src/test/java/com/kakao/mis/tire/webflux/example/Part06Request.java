@@ -12,27 +12,27 @@ import reactor.test.StepVerifier;
  */
 public class Part06Request {
 
-  private ReactiveRepository<User> repository = new ReactiveRepository<>();
+    private ReactiveRepository<User> repository = new ReactiveRepository<>();
 
-  StepVerifier requestAllExpectFour(Flux<User> flux) {
-    return StepVerifier.create(flux).expectNextCount(4).expectComplete();
-  }
+    StepVerifier requestAllExpectFour(Flux<User> flux) {
+        return StepVerifier.create(flux).expectNextCount(4).expectComplete();
+    }
 
-  StepVerifier requestOneExpectSkylerThenRequestOneExpectJesse(Flux<User> flux) {
-    return StepVerifier.create(flux)
-      .thenRequest(1).expectNext(User.SKYLER)
-      .thenRequest(1).expectNext(User.JESSE).thenCancel();
-  }
+    StepVerifier requestOneExpectSkylerThenRequestOneExpectJesse(Flux<User> flux) {
+        return StepVerifier.create(flux)
+                           .thenRequest(1).expectNext(User.SKYLER)
+                           .thenRequest(1).expectNext(User.JESSE).thenCancel();
+    }
 
-  Flux<User> fluxWithLog() {
-    return repository.findAll().log();
-  }
+    Flux<User> fluxWithLog() {
+        return repository.findAll().log();
+    }
 
-  Flux<User> fluxWithDoOnPrintln() {
-    return repository.findAll().doOnSubscribe(subscription -> System.out.println("Starring"))
-      .doOnNext(user -> {
-        System.out.println(user.getFirstname() + " " + user.getLastname());
-      })
-      .doOnComplete(() -> System.out.println("The end!"));
-  }
+    Flux<User> fluxWithDoOnPrintln() {
+        return repository.findAll().doOnSubscribe(subscription -> System.out.println("Starring"))
+                         .doOnNext(user -> {
+                             System.out.println(user.getFirstname() + " " + user.getLastname());
+                         })
+                         .doOnComplete(() -> System.out.println("The end!"));
+    }
 }

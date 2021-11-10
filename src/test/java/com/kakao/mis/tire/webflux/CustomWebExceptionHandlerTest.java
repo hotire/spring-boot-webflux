@@ -10,28 +10,28 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import com.kakao.mis.tire.webflux.error.CustomWebExceptionHandler;
 
 @RunWith(SpringRunner.class)
-@WebFluxTest(value = {GreetingHandler.class, GreetingRouter.class, CustomWebExceptionHandler.class})
+@WebFluxTest(value = { GreetingHandler.class, GreetingRouter.class, CustomWebExceptionHandler.class })
 public class CustomWebExceptionHandlerTest {
 
-  @Autowired
-  private WebTestClient webTestClient;
+    @Autowired
+    private WebTestClient webTestClient;
 
-  @Test
-  public void handleIllegalStateException() {
-    webTestClient
-      .get()
-      .uri("/hello")
-      .exchange()
-      .expectStatus().isOk();
-  }
+    @Test
+    public void handleIllegalStateException() {
+        webTestClient
+                .get()
+                .uri("/hello")
+                .exchange()
+                .expectStatus().isOk();
+    }
 
-  @Test
-  public void handle() {
-    webTestClient
-      .get()
-      .uri("/hello2")
-      .exchange()
-      .expectStatus().is5xxServerError();
-  }
+    @Test
+    public void handle() {
+        webTestClient
+                .get()
+                .uri("/hello2")
+                .exchange()
+                .expectStatus().is5xxServerError();
+    }
 
 }

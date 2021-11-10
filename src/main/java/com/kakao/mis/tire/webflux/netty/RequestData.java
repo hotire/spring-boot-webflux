@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class RequestData {
-  private int intValue;
-  private String stringValue;
+    private int intValue;
+    private String stringValue;
 }

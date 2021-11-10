@@ -14,16 +14,16 @@ import reactor.core.publisher.Mono;
 @Component
 public class CustomWebExceptionHandler implements WebExceptionHandler {
 
-  @Override
-  public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
+    @Override
+    public Mono<Void> handle(ServerWebExchange exchange, Throwable ex) {
 
-    if (ex instanceof IllegalStateException) {
-      log.error("IllegalStateException : {}", ex.getMessage());
-      exchange.getResponse().setStatusCode(HttpStatus.OK);
-      return exchange.getResponse().setComplete();
+        if (ex instanceof IllegalStateException) {
+            log.error("IllegalStateException : {}", ex.getMessage());
+            exchange.getResponse().setStatusCode(HttpStatus.OK);
+            return exchange.getResponse().setComplete();
+        }
+
+        Mono.just(1).subscribe();
+        return Mono.error(ex);
     }
-
-    Mono.just(1).subscribe();
-    return Mono.error(ex);
-  }
 }

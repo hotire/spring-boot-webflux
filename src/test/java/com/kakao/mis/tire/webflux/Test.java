@@ -7,7 +7,7 @@ import java.util.Optional;
 public class Test {
 
     @org.junit.Test
-    public void test () {
+    public void test() {
         Mono<String> mono = Mono.create(monoSink -> {
             Optional.ofNullable(get()).ifPresent(monoSink::success);
             System.out.println("??");

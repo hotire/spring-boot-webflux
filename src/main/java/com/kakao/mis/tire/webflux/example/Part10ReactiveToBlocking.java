@@ -12,13 +12,13 @@ import reactor.core.publisher.Mono;
  */
 public class Part10ReactiveToBlocking {
 
-  User monoToValue(Mono<User> mono) {
-    return mono.doOnError(throwable -> {
-      throw Exceptions.propagate(throwable);
-    }).block();
-  }
+    User monoToValue(Mono<User> mono) {
+        return mono.doOnError(throwable -> {
+            throw Exceptions.propagate(throwable);
+        }).block();
+    }
 
-  Iterable<User> fluxToValues(Flux<User> flux) {
-    return flux.toIterable();
-  }
+    Iterable<User> fluxToValues(Flux<User> flux) {
+        return flux.toIterable();
+    }
 }

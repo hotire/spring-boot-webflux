@@ -1,6 +1,5 @@
 package com.kakao.mis.tire.webflux.reactive;
 
-
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.ExecutorService;
@@ -29,78 +28,78 @@ import java.util.stream.IntStream;
  */
 @SuppressWarnings("unchecked")
 public class PubSub {
-  public static void main(String args[]) throws InterruptedException {
+    public static void main(String args[]) throws InterruptedException {
 
-    ExecutorService es = Executors.newSingleThreadExecutor();
+        ExecutorService es = Executors.newSingleThreadExecutor();
 
+        Publisher p = new Publisher<>() {
+            private Queue<Integer> queue = IntStream.range(1, 10).boxed()
+                                                    .collect(Collectors.toCollection(LinkedList::new));
 
-    Publisher p = new Publisher<>() {
-      private Queue<Integer> queue = IntStream.range(1,10).boxed()
-        .collect(Collectors.toCollection (LinkedList::new));
+            /**
+             * Subscription는
+             * Publisher와 Subscriber의 중계역할
+             *
+             */
+            @Override
+            public void subscribe(Subscriber<? super Object> subscriber) {
+                subscriber.onSubscribe(new Subscription() {
 
-      /**
-       * Subscription는
-       * Publisher와 Subscriber의 중계역할
-       *
-       */
-      @Override
-      public void subscribe(Subscriber<? super Object> subscriber) {
-        subscriber.onSubscribe(new Subscription() {
+                    @Override
+                    public void request(long n) {
+                        es.execute(() -> {
+                            int i = 0;
+                            try {
+                                while (i++ < n) {
+                                    if (queue.isEmpty()) {
+                                        subscriber.onComplete();
+                                        break;
+                                    } else {
+                                        subscriber.onNext(queue.poll());
+                                    }
+                                }
+                            } catch (RuntimeException e) {
+                                subscriber.onError(e);
+                            }
+                        });
+                    }
 
-          @Override
-          public void request(long n) {
-            es.execute(() -> {
-              int i = 0;
-              try {
-                while (i++ < n) {
-                  if (queue.isEmpty()) {
-                    subscriber.onComplete();
-                    break;
-                  } else {
-                    subscriber.onNext(queue.poll());
-                  }
-                }
-              } catch (RuntimeException e) {
-                subscriber.onError(e);
-              }
-            });
-          }
+                    @Override
+                    public void cancel() {
+                    }
+                });
+            }
+        };
 
-          @Override
-          public void cancel() { }
-        });
-      }
-    };
+        Subscriber s = new Subscriber() {
+            private Subscription subscription;
 
-    Subscriber s = new Subscriber() {
-      private Subscription subscription;
+            @Override
+            public void onSubscribe(Subscription subscription) {
+                System.out.println("on Subscribe");
+                this.subscription = subscription;
+                this.subscription.request(1);
+            }
 
-      @Override
-      public void onSubscribe(Subscription subscription) {
-        System.out.println("on Subscribe");
-        this.subscription = subscription;
-        this.subscription.request(1);
-      }
+            @Override
+            public void onNext(Object item) {
+                System.out.println("on Next" + "," + item);
+                this.subscription.request(1);
+            }
 
-      @Override
-      public void onNext(Object item) {
-        System.out.println("on Next" + "," + item);
-        this.subscription.request(1);
-      }
+            @Override
+            public void onError(Throwable throwable) {
+                System.out.println("on Error : " + throwable.getMessage());
+            }
 
-      @Override
-      public void onError(Throwable throwable) {
-        System.out.println("on Error : " + throwable.getMessage());
-      }
+            @Override
+            public void onComplete() {
+                System.out.println("on Complete ");
+            }
+        };
 
-      @Override
-      public void onComplete() {
-        System.out.println("on Complete ");
-      }
-    };
-
-    p.subscribe(s);
-    es.awaitTermination(10, TimeUnit.SECONDS);
-    es.shutdown();
-  }
+        p.subscribe(s);
+        es.awaitTermination(10, TimeUnit.SECONDS);
+        es.shutdown();
+    }
 }

@@ -14,11 +14,11 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @AutoConfigureWebTestClient
 public class WebfluxApplicationTestsMock {
 
-  @Autowired
-  private WebTestClient webTestClient;
+    @Autowired
+    private WebTestClient webTestClient;
 
-  @Test
-  public void get() {
-    webTestClient.get().uri("/hello").accept(MediaType.TEXT_PLAIN).exchange().expectStatus().isOk().expectBody(String.class).isEqualTo("Hello, Spring!").consumeWith(System.out::print);
-  }
+    @Test
+    public void get() {
+        webTestClient.get().uri("/hello").accept(MediaType.TEXT_PLAIN).exchange().expectStatus().isOk().expectBody(String.class).isEqualTo("Hello, Spring!").consumeWith(System.out::print);
+    }
 }

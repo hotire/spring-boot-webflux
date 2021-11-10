@@ -17,35 +17,35 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class NettyServer {
 
-  private final int port;
+    private final int port;
 
-  public static void main(String[] args) throws Exception {
-    new NettyServer(8080).run();
-  }
-
-  public void run() throws Exception {
-    EventLoopGroup bossGroup = new NioEventLoopGroup();
-    EventLoopGroup workerGroup = new NioEventLoopGroup();
-    try {
-      ServerBootstrap b = new ServerBootstrap();
-      b.group(bossGroup, workerGroup)
-        .channel(NioServerSocketChannel.class)
-        .childHandler(new ChannelInitializer<SocketChannel>() {
-          @Override
-          public void initChannel(SocketChannel ch)
-            throws Exception {
-            ch.pipeline().addLast(new RequestDecoder(),
-              new ResponseDataEncoder(),
-              new ProcessingHandler());
-          }
-        }).option(ChannelOption.SO_BACKLOG, 128)
-        .childOption(ChannelOption.SO_KEEPALIVE, true);
-
-      ChannelFuture f = b.bind(port).sync();
-      f.channel().closeFuture().sync();
-    } finally {
-      workerGroup.shutdownGracefully();
-      bossGroup.shutdownGracefully();
+    public static void main(final String[] args) throws Exception {
+        new NettyServer(8080).run();
     }
-  }
+
+    public void run() throws Exception {
+        final EventLoopGroup bossGroup = new NioEventLoopGroup();
+        final EventLoopGroup workerGroup = new NioEventLoopGroup();
+        try {
+            final ServerBootstrap b = new ServerBootstrap();
+            b.group(bossGroup, workerGroup)
+             .channel(NioServerSocketChannel.class)
+             .childHandler(new ChannelInitializer<SocketChannel>() {
+                 @Override
+                 public void initChannel(final SocketChannel ch)
+                         throws Exception {
+                     ch.pipeline().addLast(new RequestDecoder(),
+                                           new ResponseDataEncoder(),
+                                           new ProcessingHandler());
+                 }
+             }).option(ChannelOption.SO_BACKLOG, 128)
+             .childOption(ChannelOption.SO_KEEPALIVE, true);
+
+            final ChannelFuture f = b.bind(port).sync();
+            f.channel().closeFuture().sync();
+        } finally {
+            workerGroup.shutdownGracefully();
+            bossGroup.shutdownGracefully();
+        }
+    }
 }

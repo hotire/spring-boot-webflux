@@ -12,11 +12,11 @@ class TrafficTest {
         // given
         final WebClient webClient = WebClient.builder().build();
 
-        IntStream.range(0, 100).forEach(index ->   webClient.get()
-                                                            .uri("http://localhost:8080/async/"+ index)
-                                                            .retrieve()
-                                                            .bodyToMono(String.class)
-                                                            .subscribe(System.out::println));
+        IntStream.range(0, 100).forEach(index -> webClient.get()
+                                                          .uri("http://localhost:8080/async/" + index)
+                                                          .retrieve()
+                                                          .bodyToMono(String.class)
+                                                          .subscribe(System.out::println));
         Thread.sleep(50000L);
     }
 }
