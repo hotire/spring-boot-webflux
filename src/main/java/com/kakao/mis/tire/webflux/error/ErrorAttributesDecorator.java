@@ -2,6 +2,7 @@ package com.kakao.mis.tire.webflux.error;
 
 import java.util.Map;
 
+import org.springframework.boot.web.error.ErrorAttributeOptions;
 import org.springframework.boot.web.reactive.error.ErrorAttributes;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.server.ServerWebExchange;
@@ -13,9 +14,14 @@ public class ErrorAttributesDecorator implements ErrorAttributes {
 
     private final ErrorAttributes delegate;
 
+//    @Override
+//    public Map<String, Object> getErrorAttributes(ServerRequest request, boolean includeStackTrace) {
+//        return delegate.getErrorAttributes(request, includeStackTrace);
+//    }
+
     @Override
-    public Map<String, Object> getErrorAttributes(ServerRequest request, boolean includeStackTrace) {
-        return delegate.getErrorAttributes(request, includeStackTrace);
+    public Map<String, Object> getErrorAttributes(ServerRequest request, ErrorAttributeOptions options) {
+        return delegate.getErrorAttributes(request, options);
     }
 
     @Override

@@ -6,7 +6,9 @@ ErrorWebFluxAutoConfiguration
 
 ## WebExceptionHandler
 
-## ErrorAttributes
+
+## ErrorWebFluxAutoConfiguration
+### ErrorAttributes
 
 ~~~java
     @Bean
