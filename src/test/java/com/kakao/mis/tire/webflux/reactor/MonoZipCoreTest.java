@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 class MonoZipCoreTest {
 
     @Test
-    void test() throws InterruptedException {
+    void testVoid() throws InterruptedException {
         final List<String> list = List.of("1,2,3");
 
         final Mono<Void> mono = Mono.just(list)
@@ -25,6 +25,23 @@ class MonoZipCoreTest {
                                      .log();
 
         Mono.zip(mono, mono2).block();
+    }
+
+    @Test
+    void test() throws InterruptedException {
+        final List<String> list = List.of("1,2,3");
+
+        final Mono<List<String>> mono = Mono.just(list)
+                                            .map(it -> saveAll(it, 3000L))
+                                            .log();
+
+        final Mono<List<String>> mono2 = Mono.just(list)
+                                             .map(it -> saveAll(it, 4000L))
+                                             .log();
+
+        Mono.zip(mono, mono2).subscribe();
+
+        Thread.sleep(5000L);
     }
 
     List<String> saveAll(final List<String> list, final long millis) {
