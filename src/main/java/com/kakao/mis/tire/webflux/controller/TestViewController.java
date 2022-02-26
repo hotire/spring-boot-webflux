@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 
+@Slf4j
 @Controller
 public class TestViewController {
 
@@ -17,7 +19,7 @@ public class TestViewController {
 
     @GetMapping("/test/view2")
     public ModelAndViewContainer getView2() {
-        ModelAndViewContainer modelAndViewContainer = new ModelAndViewContainer();
+        final ModelAndViewContainer modelAndViewContainer = new ModelAndViewContainer();
         modelAndViewContainer.setView("hello");
         return modelAndViewContainer;
     }
@@ -31,4 +33,5 @@ public class TestViewController {
     public ResponseEntity getMono() {
         return ResponseEntity.ok().body(Mono.just("hello"));
     }
+
 }
