@@ -49,6 +49,8 @@ webflux !!
 ## Reactor 
 
 - https://projectreactor.io/docs/core
+- https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Mono.html
+- https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html
 
 
 ## WebHandler / DispatcherHandler Core
