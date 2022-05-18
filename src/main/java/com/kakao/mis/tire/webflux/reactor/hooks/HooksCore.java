@@ -1,5 +1,9 @@
 package com.kakao.mis.tire.webflux.reactor.hooks;
 
+import org.reactivestreams.Publisher;
+
+import com.kakao.mis.tire.webflux.reactor.AssemblySnapshotCore;
+
 import reactor.core.publisher.Hooks;
 
 /**
@@ -19,5 +23,12 @@ public class HooksCore {
      */
     void onOperatorDebug() {
         Hooks.onOperatorDebug();
+    }
+
+    /**
+     * @see Hooks#addAssemblyInfo(Publisher, reactor.core.publisher.FluxOnAssembly.AssemblySnapshot)
+     */
+    static <T, P extends Publisher<T>> Publisher<T> addAssemblyInfo(final P publisher, final AssemblySnapshotCore stacktrace) {
+        return null;
     }
 }

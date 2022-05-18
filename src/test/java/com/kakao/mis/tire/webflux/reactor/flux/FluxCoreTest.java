@@ -9,14 +9,14 @@ import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
 @Slf4j
-class FluxTest {
+class FluxCoreTest {
 
     @Test
     void share() throws InterruptedException {
-        final Flux<String> coldSource  = Flux.interval(Duration.ofMillis(1))
-                                              .map(Object::toString)
-                                              .take(10)
-                                              .doOnSubscribe(s -> log.info("doOnSubscribe"));
+        final Flux<String> coldSource = Flux.interval(Duration.ofMillis(1))
+                                            .map(Object::toString)
+                                            .take(10)
+                                            .doOnSubscribe(s -> log.info("doOnSubscribe"));
 
         final Flux<String> hot = coldSource.share();
         hot.subscribe(log::info);
