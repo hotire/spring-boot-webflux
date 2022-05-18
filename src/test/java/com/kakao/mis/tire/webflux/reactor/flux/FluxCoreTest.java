@@ -1,4 +1,4 @@
-package com.kakao.mis.tire.webflux.reactor;
+package com.kakao.mis.tire.webflux.reactor.flux;
 
 import java.time.Duration;
 
