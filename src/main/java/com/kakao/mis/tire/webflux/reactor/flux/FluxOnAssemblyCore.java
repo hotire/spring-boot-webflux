@@ -10,6 +10,9 @@ import reactor.core.publisher.Flux;
 
 /**
  * @see reactor.core.publisher.FluxOnAssembly
+ *
+ * 현재 stacktrace를 캡처하고, 내부 Subscriber에게 디버깅 목적으로 available/visible 제공한다.
+ *
  */
 public class FluxOnAssemblyCore<T> {
 
