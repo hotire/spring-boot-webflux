@@ -26,15 +26,15 @@ class FluxHotColdTest {
 
     @Test
     void cinemaCache() throws InterruptedException {
-        final Flux<String> netFlux = Flux.fromStream(this::getMovies)
+        final Flux<String> hotFlux = Flux.fromStream(this::getMovies)
                                          .doOnSubscribe(s -> log.info("영화 스트리밍 시작"))
                                          .delayElements(Duration.ofSeconds(1))
                                          .cache();
 
-        netFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "철수"))
+        hotFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "철수"))
                .subscribe(scene -> log.info("철수가 보는 영화 : " + scene));
         Thread.sleep(2000L);
-        netFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "영희"))
+        hotFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "영희"))
                .subscribe(scene -> log.info("영희가 보는 영화 : " + scene));
 
         Thread.sleep(5000L);
@@ -42,16 +42,16 @@ class FluxHotColdTest {
 
     @Test
     void cinemaOnlyOnce() throws InterruptedException {
-        final Flux<String> netFlux = Flux.fromStream(this::getMovies)
+        final Flux<String> hotFlux = Flux.fromStream(this::getMovies)
                                          .doOnSubscribe(s -> log.info("영화 스트리밍 시작"))
                                          .delayElements(Duration.ofSeconds(1))
                                          .publish()
                                          .autoConnect();
 
-        netFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "철수"))
+        hotFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "철수"))
                .subscribe(scene -> log.info("철수가 보는 영화 : " + scene));
         Thread.sleep(6000L);
-        netFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "영희"))
+        hotFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "영희"))
                .subscribe(scene -> log.info("영희가 보는 영화 : " + scene));
 
         Thread.sleep(5000L);
@@ -59,15 +59,15 @@ class FluxHotColdTest {
 
     @Test
     void cinema() throws InterruptedException {
-        final Flux<String> netFlux = Flux.fromStream(this::getMovies)
+        final Flux<String> hotFlux = Flux.fromStream(this::getMovies)
                                          .doOnSubscribe(s -> log.info("영화 스트리밍 시작"))
                                          .delayElements(Duration.ofSeconds(1))
                                          .share();
 
-        netFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "철수"))
+        hotFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "철수"))
                .subscribe(scene -> log.info("철수가 보는 영화 : " + scene));
         Thread.sleep(6000L);
-        netFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "영희"))
+        hotFlux.publishOn(Schedulers.newBoundedElastic(1, 1, "영희"))
                .subscribe(scene -> log.info("영희가 보는 영화 : " + scene));
 
         Thread.sleep(5000);
