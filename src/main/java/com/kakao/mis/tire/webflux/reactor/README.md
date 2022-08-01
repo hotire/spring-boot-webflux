@@ -4,8 +4,8 @@
 
 - Publisher
 - Subscriber
-- Subscription
-- Processor
+- Subscription : 
+- Processor : Processor는 Subscriber와 Publisher 두 가지 역할을 하게 된다. 
 
 reference : https://github.com/reactive-streams/reactive-streams-jvm/tree/v1.0.2
 
