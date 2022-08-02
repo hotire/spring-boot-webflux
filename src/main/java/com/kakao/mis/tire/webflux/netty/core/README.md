@@ -35,5 +35,14 @@ outbound
 - 원격 연결 열기 또는 닫기
 - 소켓으로 데이터 쓰기 또는 플러스
 
+## EventLoop
+
+연결의 수명주기 중 발생하는 이벤트를 처리하는 네티의 핵심 추상화 정의한 인터페이스이다.
+
+- 한 EventLoopGroup 은 하나 이상의 EventLoop 를 포함한다.
+- 한 EventLoop 는 수명주기 동안 한 Thread 로 바인딩된다.
+- 한 EventLoop 에서 처리되는 모든 입출력 이벤트는 바인딩된 Thread 에서 처리된다.
+- 한 Channel 수명주기 동안 한 EventLoop 에 등록할 수 있다. 
+- 한 EventLoop 하나 이상의 Channel 로 할당할 수 없다.
 
 
