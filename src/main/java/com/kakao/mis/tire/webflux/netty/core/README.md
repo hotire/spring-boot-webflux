@@ -45,4 +45,8 @@ outbound
 - 한 Channel 수명주기 동안 한 EventLoop 에 등록할 수 있다. 
 - 한 EventLoop 하나 이상의 Channel 로 할당할 수 없다.
 
+[eventLoop](doc/eventLoop.jpeg)
+
+
+
 
