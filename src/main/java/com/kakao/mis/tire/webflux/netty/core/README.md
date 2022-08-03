@@ -47,6 +47,12 @@ outbound
 
 [eventLoop](doc/eventLoop.jpeg)
 
+## ChannelFuture
+
+입출력 비동기 처리를 위해 추상화 정의한 인터페이스이다.
+
+
+
 
 
 
