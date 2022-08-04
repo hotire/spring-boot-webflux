@@ -52,6 +52,43 @@ outbound
 입출력 비동기 처리를 위해 추상화 정의한 인터페이스이다.
 
 
+## ChannelHandler
+
+인바운드, 아웃바운드 데이터의 처리에 적용되는 논리적인 컨테이너 역할을 한다.
+
+ChannelHandler 의 메서드가 네트워크 이벤트(광범위한 의미)에 의해 트리거 된다.
+
+### ChannelPipeline 
+
+ChannelHandler 체이닝을 위한 역할로 체인상에서 인바운드오와 아웃바운드 이벤트를 전파한다.
+
+- ChannelInitializer 구현은 ServerBootstrap 에 등록된다.
+- ChannelInitializer.initChannel() 호출되면 ChannelInitializer 의 커스텀 집합을 파이프라인에 설치한다.
+- ChannelInitializer 는 ChannelPipeline 에서 자신을 제거한다.
+
+인바운드, 아웃바운드가 동일한 ChannelPipeline 안에 두 가지 핸들러가 같이 존재한다. 
+
+인바운드, 아웃바운드 모두 ChannelHandler 를 확장하지만 네티는 ChannelInboundHandler, ChannelOutboundHandler 구현을 구분하여
+
+핸들러 간의 데이터 전달이 동일한 방향으로 수행되도록 보장한다.
+
+ChannelHandler 를 ChannelPipeline 에 추가할 때 ChannelHandler 및 ChannelPipeline 간의 바인딩을 나타내는 ChannelHandlerContext 하나가 할당된다.
+
+네티에서 메시지를 보내는 방법은 Channel 에 직접 기록하거나 ChannelHandler 와 연결된 ChannelHandlerContext 객체에 기록하는 방법이 있다. 
+
+전자가 ChannelPipeline 의 뒤쪽에서 시작되며 후자의 방법은 ChannelPipeline 의 다음 핸들러에서 시작된다.
+
+### ChannelHandlerContext
+
+핸들러 메서드에 제공되는 ChannelHandlerContext 를 통해 다음 핸들러로 이벤트를 전달할 수 있으며 
+
+관심없는 이벤트는 무시할 수 있다. 
+
+- Channel 가져오거나 아웃바운드 데이터를 기록할 떄 사용 
+
+
+
+
 
 
 
