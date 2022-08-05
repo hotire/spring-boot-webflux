@@ -1,0 +1,37 @@
+package com.kakao.mis.tire.webflux.netty.core.channel;
+
+import io.netty.channel.ChannelHandler;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.ChannelPipeline;
+import io.netty.channel.DefaultChannelPipeline;
+import io.netty.util.concurrent.EventExecutorGroup;
+
+/**
+ * @see ChannelPipeline
+ * @see DefaultChannelPipeline
+ */
+public class ChannelPipelineCore {
+
+    /**
+     * @see ChannelPipeline#fireChannelRegistered()
+     * @see DefaultChannelPipeline#fireChannelRegistered()
+     */
+    public final ChannelPipeline fireChannelRegistered() {
+        return null;
+    }
+
+    /**
+     * @see ChannelPipeline#addLast(EventExecutorGroup, String, ChannelHandler)
+     * @see DefaultChannelPipeline#addLast(EventExecutorGroup, String, ChannelHandler)
+     */
+    public final ChannelPipeline addLast(EventExecutorGroup group, String name, ChannelHandler handler) {
+        return null;
+    }
+
+    /**
+     * @see DefaultChannelPipeline#newContext(EventExecutorGroup, String, ChannelHandler)
+     */
+    private ChannelHandlerContext newContext(EventExecutorGroup group, String name, ChannelHandler handler) {
+        return null;
+    }
+}
