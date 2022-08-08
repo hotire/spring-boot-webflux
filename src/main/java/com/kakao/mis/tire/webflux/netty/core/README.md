@@ -58,6 +58,12 @@ outbound
 
 ChannelHandler 의 메서드가 네트워크 이벤트(광범위한 의미)에 의해 트리거 된다.
 
+- 데이터를 한 포맷에더 다른 포맷으로 변환 
+- 예외에 대한 알림 제공
+- Channel 활성화 또는 비활성화에 따른 알람 제공
+- Channel EventLoop 에 등록할 때 또는 해제할 때 알림 제공
+- 사용자 정의 이벤트에 대한 알림 제공 
+
 ### ChannelPipeline 
 
 ChannelHandler 체이닝을 위한 역할로 체인상에서 인바운드오와 아웃바운드 이벤트를 전파한다.
@@ -87,9 +93,47 @@ ChannelHandler 를 ChannelPipeline 에 추가할 때 ChannelHandler 및 ChannelP
 - Channel 가져오거나 아웃바운드 데이터를 기록할 떄 사용 
 
 
+### 인코더, 디코더 
+
+메시지를 전송, 수신할 때 데이터를 변환해야 한다. 
+
+인바운드 메시지는 바이트에서 다른 포맷(주로 자바객체)으로 변환되는 디코딩을 거친다. 
+
+아웃바운드 메시지는 현재 포맷에서 바이트로 인코딩된다.
 
 
 
 
+## Selector 
+
+셀렉터의 기본 개념은 Channel 의 상태가 변경되면 요청이 알림을 받을 수 있는 레지스트리의 역할을 하는 것이다.
+
+- 새로운 Channel 수락되고 준비됨
+- Channel 연결이 완료됨
+- Channel 읽을 데이터가 있음
+- Channel 이용해 데이터를 기록함
 
 
+### 제로 카피 (Zero-copy)
+
+NIO 와 Epoll 전송에서만 이용가능한 기능으로 파일 시스템의 데이터를 커널 공간에서 사용자 공간으로 복사하는 과정을 생략하여
+
+빠르고 효율적으로 네트워크로 이동할 수 있게 해준다. 
+
+## ByteBuf 
+
+테티의 데이터 컨테이너이다.
+
+자바 NIO ByteBuffer 자체 바이트 컨테이너를 제공하지만, 너무 복잡해 사용하기 부담스럽다.
+
+네티에서는 ByteBuffer 를 대신해 ByteBuf 제공한다.
+
+읽기 / 쓰기 를 위한 고유한 두 인덱스를 유지한다. ByteBuf 에서 데이터를 읽으면 ByteBuf 의 readerIndex 가 읽은 바이트 수만큼 증가한다.
+비슷하게 ByteBuf 에 데이터를 기록하면 writerIndex 가 증가한다.
+
+read / write 로 시작하는 메서드들은 인덱스를 증가시키지만, get, set 으로 시작하는 메서드는 증가시키지 않는다.
+
+
+### References
+
+- https://perfectacle.github.io/2021/02/28/netty-byte-buf/
