@@ -7,7 +7,12 @@ import io.netty.buffer.ByteBuf;
  * @see ByteBuf;
  * @see AbstractByteBuf;
  */
-public class ByteBufCore {
+public abstract class ByteBufCore {
     int readerIndex;
     int writerIndex;
+
+    /**
+     * @see ByteBuf#capacity()
+     */
+    public abstract int capacity();
 }
