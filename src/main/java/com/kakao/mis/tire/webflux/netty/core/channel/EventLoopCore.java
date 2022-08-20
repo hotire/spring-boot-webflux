@@ -1,8 +1,21 @@
 package com.kakao.mis.tire.webflux.netty.core.channel;
 
+import io.netty.channel.EventLoop;
+import io.netty.channel.EventLoopGroup;
+import io.netty.util.concurrent.EventExecutorGroup;
+
 /**
- * @see io.netty.channel.EventLoop
+ * @see java.util.concurrent.ScheduledExecutorService
+ * @see EventExecutorGroup
+ * @see EventLoopGroup
+ * @see EventLoop
  * @see io.netty.channel.nio.NioEventLoop
  */
-public class EventLoopCore {
+public interface EventLoopCore {
+
+    /**
+     * @see EventLoop#parent()
+     * @see
+     */
+    EventLoopGroup parent();
 }
