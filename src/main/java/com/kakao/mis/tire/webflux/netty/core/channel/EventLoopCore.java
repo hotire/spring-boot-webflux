@@ -18,4 +18,11 @@ public interface EventLoopCore {
      * @see
      */
     EventLoopGroup parent();
+
+
+    /**
+     * @see EventLoop#execute(Runnable);
+     * @see io.netty.channel.SingleThreadEventLoop#execute(Runnable);
+     */
+    void execute(Runnable task);
 }
