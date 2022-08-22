@@ -67,7 +67,19 @@ EventLoop 는 ScheduledExecutorService 를 확장하며 parent() 라는 메서�
 - 이전 릴리스의 스레딩 모델에서는 인바운드(업스트립) 이벤트만 Event Loop 에서 실행되고 아웃바운드 이벤트는 Event Loop 이거나 다른 스레드에서 실행되었다.
 - 이젠 릴리스의 모델은 스레드 동기화 과정이 필요하기 때문에 (여러 다른 스레드에서 아웃바운드 이벤트 접근 제한) 최근 모델에서는 동일한 스레드에서 처리하는 방법으로 변경했다.
 
+### 스레드 관리
 
+현재 실행 중인 Thread 의 ID 를 확인하는 기능, 즉 Thread 가 현재 Channel 과 해당 Event Loop 에 할당된 것인가 확인하는 기능이 중요하다. 
+
+호출 Thread 가 EventLoop 에 속하는 경우 해당 코드 블럭을 실행하고, 그렇지 않으면 EventLoop 나중에 실행하기 위해 작업을 예약히기 위해 내부 큐에 넣는다.
+
+### EventLoopGroup
+
+Channel 에 이벤트와 입출력을 지원하는 EventLoop 는 EventLoopGroup 에 포함된다. 
+
+EventLoopGroup 은 새로 생성된 각 Channel 에 EventLoop 를 할당한다. 
+
+균형을 위해 라운드 로빈 방식을 이용하여 동일한 EventLoop 가 여러 Channel 에 할당될 수 있다.
 
 ## ChannelFuture
 
