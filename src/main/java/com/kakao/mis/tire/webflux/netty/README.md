@@ -26,27 +26,6 @@ EventLoop를 그룹핑한 것이다.
 
 지정한 thread 개수 만큼 EventLoop를 생성한다.
 
-
-### EventLoop
-
-Netty는 Channel에서 발생하는 이벤트들을 EventLoop가 처리하는 구조로 이벤트를 실행하기 위한 스레드를 말한다. 
-
-연결의 수명 기간 동안 발생하는 이벤트를 처리하는 작업을 실행하는 것은 네트워킹 프레임워크의 기본 기능이다.
-
-이러한 프로그래밍 구조를 이벤트 루프라고 한다. 
-
-동시성, 네트워킹의 두 가지 기본 API 를 공동으로 활용해 설계되었다.  
-
-- io.netty.util.concurrent 패키지는 JDK 패키지인 java.util.concurrent 에 기반을 두는 스레드 실행자를 제공한다. 
-- io.netty.channel 패키지의 클래스는 Channel 이벤트와 인터페이스를 수행하기 위해 확장한다. 
-
-EventLoop 는 변경되지 않는 Thread 하나로 움직이며 작업을 즉시 실행, 예약 실행할 수 있다. 
-
-EventLoop 는 ScheduledExecutorService 를 확장하며 parent() 라는 메서드 하나만 정의한다. 
-
-현재 EventLoop 구현 인스턴스가 속한 EventLoopGroup 참조을 반환한다.
-
-
 ## References
 
 - https://perfectacle.github.io/2021/02/28/netty-glossary/
