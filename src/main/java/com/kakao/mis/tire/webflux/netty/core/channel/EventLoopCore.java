@@ -2,6 +2,7 @@ package com.kakao.mis.tire.webflux.netty.core.channel;
 
 import io.netty.channel.EventLoop;
 import io.netty.channel.EventLoopGroup;
+import io.netty.util.concurrent.AbstractEventExecutor;
 import io.netty.util.concurrent.EventExecutorGroup;
 
 /**
@@ -28,6 +29,8 @@ public interface EventLoopCore {
 
     /**
      * @see EventLoop#inEventLoop()
+     * @see AbstractEventExecutor#inEventLoop() 
+     * @see AbstractEventExecutor#inEventLoop(Thread) 
      */
     boolean inEventLoop();
 }
