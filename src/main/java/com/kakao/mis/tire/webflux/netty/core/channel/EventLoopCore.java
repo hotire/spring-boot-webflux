@@ -21,8 +21,13 @@ public interface EventLoopCore {
 
 
     /**
-     * @see EventLoop#execute(Runnable);
-     * @see io.netty.channel.SingleThreadEventLoop#execute(Runnable);
+     * @see EventLoop#execute(Runnable)
+     * @see io.netty.channel.SingleThreadEventLoop#execute(Runnable)
      */
     void execute(Runnable task);
+
+    /**
+     * @see EventLoop#inEventLoop()
+     */
+    boolean inEventLoop();
 }
