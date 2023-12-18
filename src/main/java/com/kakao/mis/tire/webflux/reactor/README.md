@@ -21,6 +21,7 @@ Reactive Stream Publisher의 구현체로 0~N개를 전달한다.
 
 - https://blog.naver.com/gngh0101/222787182356
 - https://www.vinsguru.com/reactor-hot-publisher-vs-cold-publisher/
+- https://projectreactor.io/docs/core/release/reference/#reactor.hotCold
 
 Cold는 subcribe 하지 않으면, 아무 일도 일어나지 않는다. 또한 subcribe 할 때마다 매번 독립적인 데이터를 생성하고 동작한다. 
 반면 Hot은 subcribe 하지 않더라도 데이터를 생성할 수 있다.  대표적으로 cache, share와 같은 것이 있다. 
